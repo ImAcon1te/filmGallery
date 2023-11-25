@@ -1,3 +1,6 @@
+внутри есть doker-compose.yml и Dokerfile для 3х контейнеров - drf, redis, celery
+Для токенов был использован djoser
+из доп. библиотек есть random/datetime
 
 1) GET сгенерировать категорию (Сelery) - http://127.0.0.1:8000/api/gencat/
 2) GET сгенерировать много категорий (Сelery) - http://127.0.0.1:8000/api/gencat/<int:количество>/
