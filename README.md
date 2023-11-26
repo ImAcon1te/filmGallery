@@ -4,7 +4,7 @@
 
 модели:
 - Film (внешние ключи на модель User и Сategory)
-- Сategory (внешние ключи на модель User и Сategory)
+- Сategory (внешний ключи на модель Сategory)
 - Comment (внешние ключи на модель Film и User)
   
 Поле User скрыто для изменений в интерфейсе DjangoAPI. Выставляется автоматически как и временные метки кроме поля time_filmed в модели Film.
@@ -15,11 +15,15 @@
 Авторизация/админка - использовался встроенный модуль "admin" из django.contrib. Стандартные роуты генерируются автоматически "path('admin/', admin.site.urls)" 
 В тз отдельно не было требованиям по моделям/правам пользователя поэтому я использовал встроенный функционал + на некоторых View файлах ограничил доступ, например:
 View - CommentsToFilmAPIList, URL - api/v1/сommentstotilm/<int:pk>/, доступ только для авторизованных или только для чтения. Метод GET
+
 View - GalleryAPIUpdate, URL - api/v1/gallery/<int:pk>/, доступ только авторизованным, метод PUT, типы авторизации - токен или сессия.
+
 View - GalleryAPIDestroy, URL - api/v1/gallerydelete/<int:pk>/, доступ только администратору или только для чтения (нельзя удалить), самописный класс permission
+
 View - CommentAPIUpdate, URL - api/v1/comment/<int:pk>/, доступ только владельцу или только для чтения (нельзя изменить), самописный класс permission
 
 View - CommentAPIDestroy, URL - api/v1/commentdelete/<int:pk>/, доступ только администратору или только для чтения (нельзя удалить), самописный класс permission
+
 Пагинация - простой самописный класс для View файлов: CatAPIList,
                                                       GalleryAPIList,
                                                       GallerySortByCatAPIList,
